@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=./frontend/index.html" />
+    <title>G-SIGN XR • Redirecting to Frontend Portal</title>
+    <script>
+      // If dev server or local path, redirect appropriately
+      if (window.location.port !== '5173') {
+        window.location.href = './frontend/index.html';
+      }
+    </script>
+    <style>
+      body {
+        margin: 0;
+        background-color: #f6f1ea;
+        color: #1c1917;
+        font-family: system-ui, -apple-system, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        text-align: center;
+      }
+      .link-btn {
+        display: inline-block;
+        margin-top: 1rem;
+        background-color: #9b1c2c;
+        color: #fffdf9;
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>G-SIGN XR Accessibility Portal</h2>
+    <p>Redirecting to the web application portal...</p>
+    <a class="link-btn" href="./frontend/index.html">Open Frontend Portal</a>
+  </body>
+</html>

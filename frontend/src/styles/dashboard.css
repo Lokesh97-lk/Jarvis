@@ -1,0 +1,1129 @@
+/* ==========================================================================
+   G-SIGN XR GOVERNMENT ACCESSIBILITY DASHBOARD STYLESHEET
+   ========================================================================== */
+
+/* Main Layout Root */
+.gov-dashboard-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  position: relative;
+}
+
+/* Subtle Government Accessibility Watermark / Ambient Texture */
+.gov-dashboard-root::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  background: 
+    radial-gradient(circle at 12% 15%, rgba(155, 28, 44, 0.025) 0%, transparent 45%),
+    radial-gradient(circle at 88% 85%, rgba(180, 83, 9, 0.025) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top Accessible Tricolor Indicator Bar */
+.gov-tricolor-bar {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, #ff9933 33.3%, #ffffff 33.3% 66.6%, #138808 66.6%);
+  position: sticky;
+  top: 0;
+  z-index: 110;
+}
+
+/* Main Container */
+.gov-container {
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   TOP NAVIGATION BAR
+   ========================================================================== */
+.gov-navbar {
+  position: sticky;
+  top: 4px;
+  z-index: 100;
+  background: rgba(246, 241, 234, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-beige);
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 10px rgba(55, 30, 20, 0.03);
+}
+
+.gov-navbar-inner {
+  max-width: 1720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.gov-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.gov-emblem-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--crimson-primary) 0%, var(--crimson-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  box-shadow: var(--shadow-crimson);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.gov-emblem-star {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-accent);
+  box-shadow: 0 0 6px var(--gold-accent);
+}
+
+.gov-title-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.gov-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--crimson-dark);
+  line-height: 1.15;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.gov-portal-pill {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  background: var(--gold-light);
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-border);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.gov-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Nav Telemetry Pills */
+.gov-nav-status-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.35rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+}
+
+.gov-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.gov-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.gov-status-dot.active {
+  background: var(--success-text);
+  box-shadow: 0 0 8px rgba(22, 101, 52, 0.6);
+  animation: pulseLive 1.8s infinite;
+}
+
+.gov-status-dot.paused {
+  background: var(--gold-accent);
+  box-shadow: 0 0 8px var(--gold-glow);
+}
+
+.gov-status-dot.error {
+  background: var(--crimson-primary);
+  box-shadow: 0 0 8px var(--crimson-glow);
+}
+
+.gov-divider-v {
+  width: 1px;
+  height: 16px;
+  background: var(--border-beige);
+}
+
+/* Nav Action Buttons */
+.gov-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ==========================================================================
+   BUTTONS & CONTROLS
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--crimson-primary) 0%, var(--crimson-dark) 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-crimson);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--crimson-hover) 0%, #580c16 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -2px rgba(155, 28, 44, 0.45);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-stop {
+  background: var(--crimson-soft);
+  color: var(--crimson-dark);
+  border: 1px solid var(--crimson-border);
+}
+
+.btn-stop:hover:not(:disabled) {
+  background: #ecc2c5;
+  color: var(--crimson-primary);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-beige);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-cream-alt);
+  border-color: var(--border-beige-strong);
+}
+
+.btn-gold {
+  background: var(--gold-light);
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-border);
+  font-weight: 700;
+}
+
+.btn-gold:hover:not(:disabled) {
+  background: #fde68a;
+  color: #92400e;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  color: var(--text-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-icon:hover:not(:disabled) {
+  background: var(--bg-cream-alt);
+  color: var(--crimson-dark);
+  border-color: var(--border-beige-strong);
+  transform: translateY(-1px);
+}
+
+.btn-icon.active {
+  background: var(--crimson-soft);
+  color: var(--crimson-primary);
+  border-color: var(--crimson-border);
+}
+
+.btn-icon.gold-active {
+  background: var(--gold-light);
+  color: var(--gold-accent);
+  border-color: var(--gold-border);
+}
+
+.btn:disabled, .btn-icon:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ==========================================================================
+   SESSION CONTROLS BANNER
+   ========================================================================== */
+.gov-session-controls-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-card);
+  padding: 0.9rem 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.session-info-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.session-id-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--crimson-dark);
+  background: var(--crimson-soft);
+  border: 1px solid var(--crimson-border);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+}
+
+.session-time-tag {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.session-btn-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   GOVERNMENT ACCESSIBILITY CARDS
+   ========================================================================== */
+.gov-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.gov-card:hover {
+  border-color: var(--border-beige-strong);
+  box-shadow: 0 16px 44px rgba(55, 30, 20, 0.10);
+}
+
+.gov-card-header {
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid var(--border-beige);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: linear-gradient(180deg, #fffdfa 0%, #fbf8f3 100%);
+}
+
+.gov-card-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.gov-card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: var(--crimson-soft);
+  color: var(--crimson-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.gov-card-icon.gold {
+  background: var(--gold-light);
+  color: var(--gold-accent);
+}
+
+.gov-card-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.gov-card-subtitle {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.gov-card-body {
+  padding: 1.25rem;
+  flex: 1;
+}
+
+/* ==========================================================================
+   PROMINENT VIEWPORTS (SPEAKER CAMERA & 3D ISL AVATAR)
+   ========================================================================== */
+.gov-viewports-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+}
+
+@media (max-width: 1140px) {
+  .gov-viewports-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.viewport-frame-dark {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  min-height: 400px;
+  background: #14100e;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Camera Overlay Badges */
+.viewport-badge-top-left {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(20, 16, 14, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(228, 216, 204, 0.25);
+  color: #fff;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.rec-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulseLive 1.2s infinite;
+}
+
+.viewport-badge-top-right {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(20, 16, 14, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(228, 216, 204, 0.2);
+  color: #f6f1ea;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+.viewport-bottom-hud {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 15;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.viewport-toolbar-right {
+  position: absolute;
+  top: 3.5rem;
+  right: 1rem;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Empty / Disabled Camera Placeholder */
+.camera-placeholder-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.6rem;
+  color: #a89d91;
+  padding: 2rem;
+}
+
+/* Audio Wave Bars */
+.audio-wave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+  padding: 0.25rem 0.5rem;
+  background: rgba(20, 16, 14, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(228, 216, 204, 0.2);
+}
+
+.audio-wave-bar {
+  width: 3px;
+  background: linear-gradient(180deg, var(--gold-accent) 0%, var(--crimson-primary) 100%);
+  border-radius: var(--radius-full);
+  min-height: 4px;
+  transition: height 80ms ease;
+}
+
+/* ISL Avatar Current Gloss HUD */
+.avatar-current-sign-hud {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 15;
+  background: rgba(24, 20, 18, 0.90);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(180, 83, 9, 0.45);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.85rem;
+  color: #fff;
+  min-width: 170px;
+}
+
+.hud-sign-label {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.hud-sign-token {
+  font-family: var(--font-mono);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hud-sign-progress-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(228, 216, 204, 0.2);
+  border-radius: var(--radius-full);
+  margin-top: 0.35rem;
+  overflow: hidden;
+}
+
+.hud-sign-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-accent) 0%, #f59e0b 100%);
+  transition: width 0.15s ease-out;
+}
+
+/* Avatar View Controls */
+.avatar-view-controls-bar {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   PRIMARY CARDS GRID
+   ========================================================================== */
+.gov-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.col-12 { grid-column: span 12; }
+.col-8  { grid-column: span 8; }
+.col-6  { grid-column: span 6; }
+.col-4  { grid-column: span 4; }
+.col-3  { grid-column: span 3; }
+
+@media (max-width: 1200px) {
+  .col-8, .col-6 { grid-column: span 12; }
+  .col-4 { grid-column: span 6; }
+}
+
+@media (max-width: 768px) {
+  .col-4, .col-3 { grid-column: span 12; }
+}
+
+/* ==========================================================================
+   LIVE SPEECH & INDIAN LANGUAGE CARD
+   ========================================================================== */
+.speech-transcript-box {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.15rem;
+  min-height: 110px;
+  max-height: 170px;
+  overflow-y: auto;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-primary);
+}
+
+.transcript-word {
+  display: inline-block;
+  margin-right: 0.3rem;
+  padding: 0.05rem 0.2rem;
+  border-radius: 4px;
+}
+
+.transcript-word.active {
+  background: var(--gold-light);
+  color: var(--gold-accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--gold-accent);
+}
+
+.speech-controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-beige-subtle);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.speech-actions-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Mic State Pill */
+.mic-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.mic-status-badge.listening {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid var(--success-border);
+}
+
+.mic-status-badge.paused {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+  border: 1px solid var(--warning-border);
+}
+
+.mic-status-badge.inactive {
+  background: #f5efe8;
+  color: var(--text-muted);
+  border: 1px solid var(--border-beige);
+}
+
+/* ==========================================================================
+   GESTURE & VISUAL CONTEXT CARD
+   ========================================================================== */
+.gesture-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.gesture-history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.65rem;
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-beige-subtle);
+  border-radius: var(--radius-xs);
+  font-size: 0.78rem;
+}
+
+/* ==========================================================================
+   JARVIS MULTIMODAL INTERPRETATION PANEL
+   ========================================================================== */
+.jarvis-panel-hero {
+  border: 1px solid var(--gold-border);
+  background: linear-gradient(180deg, #fffdf9 0%, #fcf8f0 100%);
+}
+
+.jarvis-meta-matrix {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+@media (max-width: 900px) {
+  .jarvis-meta-matrix {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.jarvis-matrix-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.matrix-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.matrix-val {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 0.15rem;
+}
+
+.jarvis-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-beige);
+  flex-wrap: wrap;
+}
+
+/* Speech-Gesture Conflict Alert Box */
+.conflict-alert-box {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  color: var(--warning-text);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.84rem;
+}
+
+/* ==========================================================================
+   ISL GENERATION PANEL
+   ========================================================================== */
+.isl-sequence-track {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  overflow-x: auto;
+  padding: 0.6rem 0.2rem;
+  margin-bottom: 0.85rem;
+}
+
+.isl-sign-card {
+  min-width: 115px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-md);
+  padding: 0.6rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.isl-sign-card.active-performing {
+  background: var(--crimson-soft);
+  border: 2px solid var(--crimson-primary);
+  box-shadow: 0 4px 16px rgba(155, 28, 44, 0.25);
+  transform: translateY(-2px);
+}
+
+.sign-order-num {
+  font-size: 0.64rem;
+  font-weight: 800;
+  color: var(--gold-accent);
+  background: var(--gold-light);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-gloss-name {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--crimson-dark);
+}
+
+.sign-role-tag {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   REAL-TIME PROCESSING PIPELINE GRAPH
+   ========================================================================== */
+.pipeline-flow-track {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.75rem 0.25rem;
+}
+
+.pipeline-node-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.85rem;
+  min-width: 110px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.pipeline-node-btn:hover {
+  border-color: var(--crimson-primary);
+  transform: translateY(-2px);
+}
+
+.pipeline-node-btn.active {
+  border: 2px solid var(--crimson-primary);
+  background: var(--crimson-soft);
+}
+
+.node-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.node-status-pill {
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-full);
+}
+
+.node-status-pill.ready { background: var(--success-bg); color: var(--success-text); }
+.node-status-pill.processing { background: var(--gold-light); color: var(--gold-accent); }
+.node-status-pill.complete { background: var(--info-bg); color: var(--info-text); }
+.node-status-pill.warning { background: var(--warning-bg); color: var(--warning-text); }
+
+.pipeline-arrow {
+  color: var(--border-beige-strong);
+  display: flex;
+  align-items: center;
+}
+
+/* ==========================================================================
+   SYSTEM STATUS BAR
+   ========================================================================== */
+.gov-status-bar {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-beige);
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  bottom: 0;
+  z-index: 95;
+  box-shadow: 0 -4px 16px rgba(55, 30, 20, 0.04);
+}
+
+.gov-status-bar-inner {
+  max-width: 1720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.status-indicators-track {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.status-light {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.status-light.green { background: #166534; box-shadow: 0 0 6px #166534; }
+.status-light.amber { background: #b45309; box-shadow: 0 0 6px #b45309; }
+.status-light.red { background: #991b1b; box-shadow: 0 0 6px #991b1b; }
+
+/* ==========================================================================
+   TOASTS & MODALS
+   ========================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 4.5rem;
+  right: 1.5rem;
+  max-width: 320px;
+  width: calc(100vw - 3rem);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.toast-message {
+  pointer-events: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-left: 4px solid var(--crimson-primary);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.15rem;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  animation: slideUpToast 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpToast {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal Backdrop */
+.gov-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.45);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.gov-modal-dialog {
+  background: var(--bg-card);
+  border: 1px solid var(--border-beige);
+  border-radius: var(--radius-card);
+  width: 100%;
+  max-width: 650px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 85vh;
+}
+
+.gov-modal-header {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--border-beige);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #fffdfa 0%, #fbf8f3 100%);
+}
+
+.gov-modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.gov-modal-footer {
+  padding: 0.9rem 1.5rem;
+  border-top: 1px solid var(--border-beige);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: var(--bg-card-subtle);
+}
+
+/* Event Log Drawer */
+.event-log-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-beige);
+  box-shadow: var(--shadow-lg);
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  animation: slideInDrawer 0.25s ease-out;
+}
+
+@keyframes slideInDrawer {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES & MOBILE DOCK
+   ========================================================================== */
+@media (min-width: 901px) {
+  .gov-mobile-dock {
+    display: none !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .gov-mobile-dock {
+    display: flex !important;
+  }
+  .gov-viewports-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .gov-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .col-6 {
+    grid-column: span 12 !important;
+  }
+  .gov-navbar-inner {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .gov-nav-links {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 0.3rem;
+  }
+  .gov-status-bar {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .gov-brand .gov-subtitle {
+    display: none;
+  }
+  .gov-nav-status-cluster .gov-divider-v:nth-child(n+3),
+  .gov-nav-status-cluster .gov-status-pill:nth-child(n+4) {
+    display: none;
+  }
+}
+

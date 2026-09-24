@@ -1,0 +1,194 @@
+/* ==========================================================================
+   G-SIGN XR GOVERNMENT ACCESSIBILITY DESIGN SYSTEM
+   Visual Language:
+   - Main Background: #f6f1ea (warm cream)
+   - Elevated Cards/Panels: #fffdf9
+   - Primary Text: #1c1917
+   - Secondary Text: #5c534c
+   - Borders & Dividers: #e4d8cc
+   - Primary Crimson Brand/Action: #9b1c2c
+   - Dark Crimson Hover/Active: #6f101c
+   - Soft Crimson Highlights: #f3d6d8
+   - Gold Accents: #b45309
+   - Success: #166534 / #dcfce7
+   - Warnings: #9a3412 / #ffedd5
+   - Errors: #991b1b / #fee2e2
+   - Information: #1e3a5f
+   - Soft Shadows: 0 12px 40px rgba(55,30,20,0.08)
+   - 16px Rounded Corners
+   - Source Sans 3 / system-ui typography
+   ========================================================================== */
+
+:root {
+  /* Core Backgrounds */
+  --bg-main: #f6f1ea;
+  --bg-cream-alt: #eee6db;
+  --bg-card: #fffdf9;
+  --bg-card-elevated: #ffffff;
+  --bg-card-subtle: #fcf8f2;
+
+  /* Typography Colors */
+  --text-primary: #1c1917;
+  --text-secondary: #5c534c;
+  --text-muted: #786f67;
+  --text-on-crimson: #ffffff;
+
+  /* Borders & Dividers */
+  --border-beige: #e4d8cc;
+  --border-beige-strong: #cfbead;
+  --border-beige-subtle: #f0e7dc;
+
+  /* Crimson Brand Hierarchy */
+  --crimson-primary: #9b1c2c;
+  --crimson-dark: #6f101c;
+  --crimson-hover: #831623;
+  --crimson-soft: #f3d6d8;
+  --crimson-border: rgba(155, 28, 44, 0.28);
+  --crimson-glow: rgba(155, 28, 44, 0.16);
+
+  /* Gold Accents */
+  --gold-accent: #b45309;
+  --gold-light: #fef3c7;
+  --gold-soft: #fbf0d9;
+  --gold-border: rgba(180, 83, 9, 0.32);
+  --gold-glow: rgba(180, 83, 9, 0.18);
+
+  /* Semantic Feedback States */
+  --success-text: #166534;
+  --success-bg: #dcfce7;
+  --success-border: #86efac;
+
+  --warning-text: #9a3412;
+  --warning-bg: #ffedd5;
+  --warning-border: #fdba74;
+
+  --error-text: #991b1b;
+  --error-bg: #fee2e2;
+  --error-border: #fca5a5;
+
+  --info-text: #1e3a5f;
+  --info-bg: #e0f2fe;
+  --info-border: #93c5fd;
+
+  /* Elevation Shadows */
+  --shadow-card: 0 12px 40px rgba(55, 30, 20, 0.08);
+  --shadow-sm: 0 2px 6px rgba(55, 30, 20, 0.04), 0 1px 2px rgba(55, 30, 20, 0.02);
+  --shadow-md: 0 8px 24px rgba(55, 30, 20, 0.06);
+  --shadow-lg: 0 16px 48px rgba(55, 30, 20, 0.10);
+  --shadow-crimson: 0 8px 20px -2px rgba(155, 28, 44, 0.35);
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-card: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-main: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 240ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 320ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Accessible Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-cream-alt);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-beige-strong);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Accessible Focus States */
+button:focus-visible, 
+a:focus-visible, 
+input:focus-visible, 
+select:focus-visible, 
+textarea:focus-visible {
+  outline: 2px solid var(--crimson-primary);
+  outline-offset: 2px;
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+p, span, label {
+  color: var(--text-secondary);
+}
+
+strong, b {
+  color: var(--text-primary);
+}
+
+/* Buttons */
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+/* Animations */
+@keyframes pulseLive {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-pulse-live {
+  animation: pulseLive 1.8s infinite ease-in-out;
+}

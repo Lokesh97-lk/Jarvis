@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%239b1c2c'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="theme-color" content="#9b1c2c" />
+    <meta name="color-scheme" content="light" />
+    <meta name="application-name" content="G-SIGN XR" />
+    <meta name="apple-mobile-web-app-title" content="G-SIGN XR" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="description" content="G-SIGN XR — National Multimodal Speech-to-Indian-Sign-Language Real-Time Dubbing Platform. Multilingual Indic speech recognition, computer vision gesture context, JARVIS semantic reasoner, and Grade 2 3D ISL avatar." />
+    
+    <title>G-SIGN XR • National Multimodal Speech-to-ISL Accessibility Portal</title>
+    
+    <!-- Source Sans 3 & JetBrains Mono Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Immediate Warm Base Styles to Prevent White Flash -->
+    <style>
+      :root {
+        --bg-page: #f6f1ea;
+        --bg-card: #fffdf9;
+        --crimson-primary: #9b1c2c;
+        --text-primary: #1c1917;
+      }
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #f6f1ea;
+        color: #1c1917;
+        font-family: 'Source Sans 3', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+      }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Pre-react Splash Loader */
+      .app-loader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #f6f1ea;
+        color: #1c1917;
+        text-align: center;
+        padding: 2rem;
+        box-sizing: border-box;
+      }
+      .app-loader-emblem {
+        width: 58px;
+        height: 58px;
+        background: #9b1c2c;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px rgba(155, 28, 44, 0.25);
+        margin-bottom: 1.25rem;
+        animation: pulseLoader 2s infinite ease-in-out;
+      }
+      .app-loader-emblem svg {
+        width: 32px;
+        height: 32px;
+        fill: #fffdf9;
+      }
+      .app-loader-title {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #1c1917;
+        margin-bottom: 0.35rem;
+        letter-spacing: -0.01em;
+      }
+      .app-loader-subtitle {
+        font-size: 0.85rem;
+        color: #5c534c;
+        margin-bottom: 1.5rem;
+        max-width: 440px;
+        line-height: 1.45;
+      }
+      .app-loader-bar {
+        width: 240px;
+        height: 5px;
+        background: #e4d8cc;
+        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
+      }
+      .app-loader-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 45%;
+        background: linear-gradient(90deg, #9b1c2c, #b45309);
+        border-radius: 4px;
+        animation: barSlide 1.3s infinite ease-in-out;
+      }
+      @keyframes pulseLoader {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.92; }
+      }
+      @keyframes barSlide {
+        0% { left: -45%; }
+        100% { left: 100%; }
+      }
+      .noscript-banner {
+        max-width: 600px;
+        margin: 3rem auto;
+        padding: 2rem;
+        background: #fffdf9;
+        border: 2px solid #9b1c2c;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(55, 30, 20, 0.1);
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-DHaLZW0i.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BoRCwJie.css">
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript-banner">
+        <h2 style="color: #9b1c2c; margin-top: 0;">JavaScript Required</h2>
+        <p style="color: #5c534c; line-height: 1.6;">
+          G-SIGN XR requires JavaScript enabled to run real-time multilingual speech recognition,
+          MediaPipe computer vision, JARVIS reasoning, and the Grade 2 3D ISL avatar engine.
+        </p>
+      </div>
+    </noscript>
+
+    <div id="root">
+      <!-- Accessible Splash Screen shown prior to React mounting -->
+      <div class="app-loader" role="status" aria-live="polite">
+        <div class="app-loader-emblem">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+          </svg>
+        </div>
+        <div class="app-loader-title">G-SIGN XR</div>
+        <div class="app-loader-subtitle">
+          National Multimodal Speech-to-Indian-Sign-Language Real-Time Dubbing Platform
+        </div>
+        <div class="app-loader-bar" aria-label="Loading application"></div>
+      </div>
+    </div>
+
+    <!-- Main React Application Entry Point -->
+  </body>
+</html>
